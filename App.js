@@ -4,6 +4,7 @@ import {View, KeyboardAvoidingView, Image, TextInput, TouchableOpacity, Text} fr
 
 export default function App(){
   return (
+<<<<<<< HEAD
     <KeyboardAvoidingView style = {styles.background}>
     <View style = {styles.containerLogo}>
     <Image
@@ -39,6 +40,15 @@ export default function App(){
       </View>
     </KeyboardAvoidingView>
   )
+=======
+    <View style={styles.container}>
+      <Text>COLABORADORES!</Text>
+      <Text>MARINILZA!</Text>
+      <Text>ALEXANDRO!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+>>>>>>> 22fd82a51d8f3c3cc25715a3cb6b1b4079da08de
 }
 
     const styles = StyleSheet.create({

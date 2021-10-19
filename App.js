@@ -1,100 +1,35 @@
 import React from 'react'
-import {
-    StyleSheet,
-    View,
-    KeyboardAvoidingView,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    Text,
-} from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
+
+import Background from './src/components/Background'
+import TextBox from './src/components/TextBox'
 
 export default function App() {
     return (
-        <KeyboardAvoidingView style={styles.background}>
-            <View style={styles.containerLogo}>
-                <Image source={require('./assets/logo.png')} />
-            </View>
-
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    autocorrect={false}
-                    onChangedText={() => {}}
+        <ScrollView style={styles.container}>
+            <View style={styles.containerContent}>
+                <TextBox iconName="search" placeholder="Nome do usuário" />
+                <TextBox
+                    iconName="person"
+                    placeholder="Login do usuário"
+                    keyboardType="email-address"
                 />
+                <TextBox iconName="vpn-key" placeholder="Senha do usuário" isPassword={true} />
             </View>
-
-            <View>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Senha"
-                    autocorrect={false}
-                    onChangedText={() => {}}
-                />
-
-                <TouchableOpacity style={styles.btnSubmit}>
-                    <Text style={styles.btnSubmit}> Acessar</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btnRegister}>
-                    <Text style={styles.registerText}>Criar Conta</Text>
-                </TouchableOpacity>
-            </View>
-        </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#08B6CB',
-    },
-
-    containerLogo: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-
     container: {
-        flex: 1,
+        backgroundColor: '#4DD0E2',
+        margin: 15,
+        marginTop: 25,
+    },
+    containerContent: {
+        flexDirection: 'column',
+        backgroundColor: 'grey',
         alignItems: 'center',
-        justifyContent: 'center',
-        width: '90%',
-        paddingBottom: 50,
-    },
-
-    input: {
-        backgroundColor: '#FFF',
-        width: '90%',
-        marginBottom: 15,
-        color: '#222',
-        fontSize: 17,
-        borderRadius: 7,
-        padding: 10,
-    },
-
-    btnSubmit: {
-        backgroundColor: '#35AAFF',
-        width: '90%',
-        // heigth: 45,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 7,
-    },
-
-    submitText: {
-        color: '#FFF',
-        fontSize: 18,
-    },
-
-    btnRegister: {
-        marginTop: 10,
-    },
-
-    registerText: {
-        color: '#FFF',
+        justifyContent: 'space-around',
     },
 })

@@ -8,7 +8,7 @@ import styles from './style'
 export default function CaixaDeTexto(props) {
     return (
         <View style={styles.container}>
-            <MaterialIcons style={styles.icon} name={props.iconName} />
+            {props.iconName && <MaterialIcons style={styles.icon} name={props.iconName} />}
 
             <TextInput
                 style={styles.input}

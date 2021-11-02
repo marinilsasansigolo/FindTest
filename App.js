@@ -1,40 +1,23 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { Container } from './src/components/Background/style'
+import HomeScreen from './src/screens/Home'
+import SplashScreen from './src/screens/Splash'
 
-import TextBox from './src/components/TextBox'
+const Stack = createNativeStackNavigator()
 
 export default function App() {
     return (
-        <Container>
-            <View>
-                <Text>BOTÃO</Text>
-            </View>
-
-            <View>
-                <TextBox placeholder="Nome do usuário" />
-                <TextBox iconName="vpn-key" placeholder="Senha do usuário" isPassword={true} />
-                <TextBox
-                    style={{ marginTop: 80, padding: 5 }}
-                    iconName="person"
-                    placeholder="Login do usuário"
-                    keyboardType="email-address"
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Splash">
+                <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Splash"
+                    component={SplashScreen}
+                    options={{ headerShown: false }}
                 />
-            </View>
-
-            <View>
-                <Text>BOTÃO</Text>
-            </View>
-        </Container>
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
-
-// const styles = StyleSheet.create({
-//     containerContent: {
-//         flexDirection: 'column',
-//         backgroundColor: 'grey',
-//         alignItems: 'center',
-//         justifyContent: 'flex-end',
-//     },
-// })

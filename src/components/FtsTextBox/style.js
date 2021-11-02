@@ -8,13 +8,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.8,
     },
     icon: {
-        // flex: 1,
         color: '#fff',
         fontSize: 20,
         margin: 8,
     },
     input: {
-        // flex: 5,
         height: 50,
         color: '#fff',
     },

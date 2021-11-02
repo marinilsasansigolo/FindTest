@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import styles from './style'
 
-export default function CaixaDeTexto(props) {
+export default function FtsTextBox(props) {
     return (
         <View style={styles.container}>
             {props.iconName && <MaterialIcons style={styles.icon} name={props.iconName} />}

@@ -1,11 +1,28 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { Alert, StyleSheet, View, BackHandler } from 'react-native'
 
 import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsButton from '../../components/FtsButton'
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
+    const backAction = () => {
+        // Alert.alert('Sair', 'Tem certeza que deseja sair?', [
+        //     {
+        //         text: 'Cancelar',
+        //         onPress: () => null,
+        //     },
+        //     { text: 'Sim', onPress: () => BackHandler.exitApp() },
+        // ])
+        return true
+    }
+
+    useEffect(() => {
+        const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction)
+
+        return () => backHandler.remove()
+    }, [])
+
     return (
         <FtsBackground>
             <View style={styles.containerContent}>
@@ -20,7 +37,12 @@ export default function HomeScreen() {
                     </View>
                     <View>
                         <View style={styles.button}>
-                            <FtsButton text="Estabelecimento" />
+                            <FtsButton
+                                text="Estabelecimento"
+                                onPress={() => {
+                                    navigation.navigate('Login')
+                                }}
+                            />
                         </View>
                     </View>
                 </View>

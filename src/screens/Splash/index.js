@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsLogo from '../../components/FtsLogo'
@@ -15,7 +15,7 @@ export default function SplashScreen({ navigation }) {
                     <Text
                         style={styles.text}
                         onPress={() => {
-                            navigation.navigate('Login')
+                            navigation.navigate('Home')
                         }}
                     >
                         Bem-vindo!

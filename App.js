@@ -6,6 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import HomeScreen from './src/screens/Home'
 import LoginScreen from './src/screens/Login'
+import SignUpScreen from './src/screens/SignUp'
 import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
@@ -19,6 +20,26 @@ export default function App() {
                 <Stack.Screen
                     name="Login"
                     component={LoginScreen}
+                    options={{
+                        leftButtonStyle: {
+                            color: '#fff',
+                        },
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                        // headerLeft: () => (
+                        //     <HeaderBackButton
+                        //         onPress={() => {
+                        //             navigation.goBack
+                        //         }}
+                        //     />
+                        // ),
+                    }}
+                />
+                <Stack.Screen
+                    name="SignUp"
+                    component={SignUpScreen}
                     options={{
                         leftButtonStyle: {
                             color: '#fff',

@@ -20,12 +20,14 @@ export default function LoginScreen({ navigation }) {
                 </View>
 
                 <View style={styles.inputsContainer}>
-                    <FtsTextBox
-                        style={styles.inputText}
-                        color="red"
-                        iconName="person"
-                        placeholder="Nome do usuário"
-                    />
+                    <View style={styles.inputText}>
+                        <FtsTextBox
+                            // style={styles.inputText}
+                            color="red"
+                            iconName="mail"
+                            placeholder="E-mail"
+                        />
+                    </View>
                     <FtsTextBox iconName="vpn-key" placeholder="Senha" isPassword={true} />
                 </View>
             </KeyboardAvoidingView>
@@ -46,7 +48,12 @@ export default function LoginScreen({ navigation }) {
                                     navigation.navigate('Home')
                                 }}
                             >
-                                <Text style={[styles.bottomText, styles.bottomTextRegister]}>
+                                <Text
+                                    style={[styles.bottomText, styles.bottomTextRegister]}
+                                    onPress={() => {
+                                        navigation.navigate('SignUp')
+                                    }}
+                                >
                                     Cadastre-se
                                 </Text>
                             </TouchableOpacity>

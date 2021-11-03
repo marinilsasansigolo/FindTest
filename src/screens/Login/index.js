@@ -1,10 +1,12 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
 import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsButton from '../../components/FtsButton'
+import FtsTextBox from '../../components/FtsTextBox'
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen({ navigation }) {
     return (
         <FtsBackground>
             <View style={styles.containerContent}>
@@ -12,18 +14,35 @@ export default function LoginScreen({navigation}) {
                     <FtsLogo />
                 </View>
 
-                <View style={styles.buttonsContainer}>
+                <View style={styles.inputsContainer}>
+                    <FtsTextBox iconName="person" placeholder="Nome do usuário" />
+                    <FtsTextBox iconName="vpn-key" placeholder="Senha" isPassword={true} />
+                </View>
+
+                <View style={styles.bottomContent}>
                     <View>
                         <View style={styles.button}>
-                            <FtsButton text="Entrar"
-                                 onPress={() => {
-            
+                            <FtsButton
+                                text="Entrar"
+                                onPress={() => {
                                     navigation.navigate('MenuPrincipal')
-                                 }} />
+                                }}
+                            />
+                            <View style={styles.bottomTextContainer}>
+                                <Text style={styles.bottomText}>Não é usuário?</Text>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        navigation.navigate('Home')
+                                    }}
+                                >
+                                    <Text style={[styles.bottomText, styles.bottomTextRegister]}>
+                                        Cadastre-se
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
-                    <View>
-                    </View>
+                    <View></View>
                 </View>
             </View>
         </FtsBackground>
@@ -35,76 +54,32 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    logoContainer: { flex: 1 },
-    buttonsContainer: { flex: 2, marginTop: 100 },
-    button: { marginVertical: 10 },
-})
-
-/*import React  from 'react'
-import { View, Text,StyleSheet } from 'react-native'
-import FtsButton from '../../components/FtsButton'
-import FtsBackground from '../../components/FtsBackground'
-import FtsLogo from '../../components/FtsLogo'
-
-export default function LoginScreen() {
-    return (
-        <FtsBackground>
-            <View style={styles.containerContent}>
-                <View style={styles.logoContainer}>
-                    <FtsLogo />
-                </View>
-                <View style={styles.buttonsContainer}>
-                    <View>
-                        <View style={styles.button}>
-                            <FtsButton text="Entrar" />
-                        </View>
-                    </View>
-                    <View>
-                    </View>
-                </View>
-            </View>
-        </FtsBackground>
-    )
-}
-const styles = StyleSheet.create({
-    containerContent: {
+    logoContainer: {
         flex: 1,
-        alignItems: 'center',
     },
-    logoContainer: { flex: 1 },
-    buttonsContainer: { flex: 2, marginTop: 100 },
-    button: { marginVertical: 10 },
-})
-*/
-//Vai chamar esta tela ao clicar em estabelecimento
-/*export default function SobreScreen({ route, navigation }) {
-    return (
-        
-        <FtsBackground>
-        <View style={styles.container}>
-              <View style={styles.button}>
-                    <Button title="Entrar"
-                        onPress={() => {
-                            navigation.navigate('MenuPrincipal')
-                        } } />
-                </View>
-                <View style={styles.button}>
-                    <Button title="Voltar" onPress={() => navigation.goBack()} />
-                </View>
-            </View>
-        </FtsBackground>
-    )
-}
-
-const styles = StyleSheet.create({
-    container: {
+    inputsContainer: {
         flex: 1,
-        backgroundColor: '#e1c0e4',
-        alignItems: 'center',
         justifyContent: 'center',
+        width: 300,
+    },
+    bottomContent: {
+        flex: 1,
+        marginTop: 100,
+    },
+    bottomTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 15,
+    },
+    bottomText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    bottomTextRegister: {
+        marginLeft: 7,
+        color: '#fff',
     },
     button: {
-        margin: 10,
+        marginVertical: 10,
     },
 })
-*/

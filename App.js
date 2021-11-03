@@ -9,7 +9,11 @@ import LoginScreen from './src/screens/Login'
 import SignUpScreen from './src/screens/SignUp'
 import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
+<<<<<<< HEAD
 import SearchCompanyScreen from './src/screens/SearchCompany'
+=======
+import CadastrarLocalScreen from './src/screens/CadastrarLocal'
+>>>>>>> f6634a436821cba5da807053d3c0d73e943ef5c0
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
 
 const Stack = createNativeStackNavigator()

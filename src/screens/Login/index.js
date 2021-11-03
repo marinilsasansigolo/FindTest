@@ -1,4 +1,46 @@
-import React  from 'react'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import FtsLogo from '../../components/FtsLogo'
+import { FtsBackground } from '../../components/FtsBackground'
+import FtsButton from '../../components/FtsButton'
+
+export default function LoginScreen({navigation}) {
+    return (
+        <FtsBackground>
+            <View style={styles.containerContent}>
+                <View style={styles.logoContainer}>
+                    <FtsLogo />
+                </View>
+
+                <View style={styles.buttonsContainer}>
+                    <View>
+                        <View style={styles.button}>
+                            <FtsButton text="Entrar"
+                                 onPress={() => {
+            
+                                    navigation.navigate('MenuPrincipal')
+                                 }} />
+                        </View>
+                    </View>
+                    <View>
+                    </View>
+                </View>
+            </View>
+        </FtsBackground>
+    )
+}
+
+const styles = StyleSheet.create({
+    containerContent: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    logoContainer: { flex: 1 },
+    buttonsContainer: { flex: 2, marginTop: 100 },
+    button: { marginVertical: 10 },
+})
+
+/*import React  from 'react'
 import { View, Text,StyleSheet } from 'react-native'
 import FtsButton from '../../components/FtsButton'
 import FtsBackground from '../../components/FtsBackground'
@@ -33,7 +75,7 @@ const styles = StyleSheet.create({
     buttonsContainer: { flex: 2, marginTop: 100 },
     button: { marginVertical: 10 },
 })
-
+*/
 //Vai chamar esta tela ao clicar em estabelecimento
 /*export default function SobreScreen({ route, navigation }) {
     return (

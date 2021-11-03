@@ -9,6 +9,7 @@ import LoginScreen from './src/screens/Login'
 import SignUpScreen from './src/screens/SignUp'
 import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
+import CadastrarLocalScreen from './src/screens/CadastrarLocal'
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
 
 const Stack = createNativeStackNavigator()
@@ -79,6 +80,12 @@ export default function App() {
                 <Stack.Screen
                     name="Principal"
                     component={PrincipalScreen}
+                    options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="CadastrarLocal"
+                    component={CadastrarLocalScreen}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

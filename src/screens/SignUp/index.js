@@ -9,12 +9,11 @@ import FtsHeaderBar from '../../components/FtsHeaderBar'
 
 export default function SignUpScreen({ navigation }) {
     return (
-        <FtsBackground>
+        <FtsBackground style={{ height: '100%' }}>
             <KeyboardAvoidingView behavior="padding" style={styles.containerContent}>
                 <View style={styles.logoContainer}>
                     <FtsLogo />
                 </View>
-
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputText}>
                         <FtsTextBox iconName="person" placeholder="Nome do usuário" />
@@ -25,7 +24,6 @@ export default function SignUpScreen({ navigation }) {
                     <FtsTextBox iconName="vpn-key" placeholder="Senha" isPassword={true} />
                 </View>
             </KeyboardAvoidingView>
-
             <View style={styles.bottomContent}>
                 <View>
                     <View style={styles.button}>

@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderColor: '#fff',
         borderBottomWidth: 0.8,
+        // marginHorizontal: 20,
     },
     icon: {
         color: '#fff',
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 50,
+        width: '100%',
         color: '#fff',
     },
 })

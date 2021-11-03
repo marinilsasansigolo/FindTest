@@ -9,6 +9,7 @@ import LoginScreen from './src/screens/Login'
 import SignUpScreen from './src/screens/SignUp'
 import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
+import SearchCompanyScreen from './src/screens/SearchCompany'
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
 
 const Stack = createNativeStackNavigator()
@@ -80,6 +81,16 @@ export default function App() {
                     name="Principal"
                     component={PrincipalScreen}
                     options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="SearchCompany"
+                    component={SearchCompanyScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

@@ -47,7 +47,7 @@ export default function PrincipalScreen({ navigation }) {
                             <FtsButton
                                 text="Pesquisar Local"
                                 onPress={() => {
-                                    navigation.navigate('PesquisarLocal')
+                                    navigation.navigate('SearchCompany')
                                 }}
                             />
                         </View>

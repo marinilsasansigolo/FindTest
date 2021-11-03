@@ -32,7 +32,12 @@ export default function HomeScreen({ navigation }) {
                 <View style={styles.buttonsContainer}>
                     <View>
                         <View style={styles.button}>
-                            <FtsButton text="Pessoa" />
+                            <FtsButton
+                                text="Pessoa"
+                                onPress={() => {
+                                    navigation.navigate('SearchCompany')
+                                }}
+                            />
                         </View>
                     </View>
                     <View>

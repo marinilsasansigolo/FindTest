@@ -15,7 +15,7 @@ export default function SplashScreen({ navigation }) {
                     <Text
                         style={styles.text}
                         onPress={() => {
-                            navigation.navigate('Home')
+                            navigation.navigate('Login')
                         }}
                     >
                         Bem-vindo!

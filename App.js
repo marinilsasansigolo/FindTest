@@ -12,6 +12,10 @@ import PrincipalScreen from './src/screens/Principal'
 import SearchCompanyScreen from './src/screens/SearchCompany'
 import CadastrarLocalScreen from './src/screens/CadastrarLocal'
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
+import DadosScreen from './src/screens/Dados'
+import EditarLocalScreen from './src/screens/EditarLocal'
+import DadosEdicaoScreen from './src/screens/DadosEdicao'
+
 
 const Stack = createNativeStackNavigator()
 
@@ -50,13 +54,6 @@ export default function App() {
                         headerTitle: '',
                         headerTransparent: true,
                         headerShadowVisible: false,
-                        // headerLeft: () => (
-                        //     <HeaderBackButton
-                        //         onPress={() => {
-                        //             navigation.goBack
-                        //         }}
-                        //     />
-                        // ),
                     }}
                 />
                 <Stack.Screen
@@ -96,6 +93,37 @@ export default function App() {
                 <Stack.Screen
                     name="CadastrarLocal"
                     component={CadastrarLocalScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="EditarLocal"
+                    component={EditarLocalScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                   <Stack.Screen
+                    name="Dados"
+                    component={DadosScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+
+                    <Stack.Screen
+                    name="DadosEdicao"
+                    component={DadosEdicaoScreen}
                     options={{
                         headerShown: true,
                         headerTitle: '',

@@ -30,7 +30,10 @@ export default function LoginScreen({ navigation }) {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.inputsContainer}>
                         <View style={styles.inputText}>
+
+                            
                             <FtsTextBox color="red" iconName="people" placeholder="Nome" />
+
                         </View>
                     </View>
                     <View style={styles.inputsContainer}>

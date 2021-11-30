@@ -45,6 +45,17 @@ export default function PrincipalScreen({ navigation }) {
                     <View>
                         <View style={styles.button}>
                             <FtsButton
+                                text="Editar Dados"
+                                onPress={() => {
+                                    navigation.navigate('Dados')
+                                }}
+                            />
+                        </View>
+                    </View>
+
+                    <View>
+                        <View style={styles.button}>
+                            <FtsButton
                                 text="Pesquisar Local"
                                 onPress={() => {
                                     navigation.navigate('SearchCompany')
@@ -81,6 +92,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logoContainer: { flex: 1 },
-    buttonsContainer: { flex: 2, marginTop: 100 },
+    buttonsContainer: { flex: 2, marginTop: 20 },
     button: { marginVertical: 10 },
 })

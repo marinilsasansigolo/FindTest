@@ -11,6 +11,10 @@ import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
 import SearchCompanyScreen from './src/screens/SearchCompany'
 import CadastrarLocalScreen from './src/screens/CadastrarLocal'
+import Dados from './src/screens/Dados'
+import EditarLocal from './src/screens/EditarLocal'
+import DadosEdicao from './src/screens/DadosEdicao'
+
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
 
 const Stack = createNativeStackNavigator()
@@ -96,6 +100,36 @@ export default function App() {
                 <Stack.Screen
                     name="CadastrarLocal"
                     component={CadastrarLocalScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="Dados"
+                    component={Dados}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="EditarLocal"
+                    component={EditarLocal}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="DadosEdicao"
+                    component={DadosEdicao}
                     options={{
                         headerShown: true,
                         headerTitle: '',

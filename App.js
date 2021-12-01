@@ -16,6 +16,9 @@ import EditarLocal from './src/screens/EditarLocal'
 import DadosEdicao from './src/screens/DadosEdicao'
 
 import HeaderBackButton from './src/components/FtsHeaderBackButton'
+import DadosScreen from './src/screens/Dados'
+import EditarLocalScreen from './src/screens/EditarLocal'
+import DadosEdicaoScreen from './src/screens/DadosEdicao'
 
 const Stack = createNativeStackNavigator()
 
@@ -54,13 +57,6 @@ export default function App() {
                         headerTitle: '',
                         headerTransparent: true,
                         headerShadowVisible: false,
-                        // headerLeft: () => (
-                        //     <HeaderBackButton
-                        //         onPress={() => {
-                        //             navigation.goBack
-                        //         }}
-                        //     />
-                        // ),
                     }}
                 />
                 <Stack.Screen

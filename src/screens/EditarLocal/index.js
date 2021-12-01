@@ -38,6 +38,7 @@ export default function EditarLocal({ navigation }) {
                         horaabertura: document.data.horaabertura,
                         cidade: document.data.cidade,
                         horafechar: document.data.horafechar,
+                        renderizado: true,
                     }
 
                     list.push(task)

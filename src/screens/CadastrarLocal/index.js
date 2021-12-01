@@ -8,7 +8,7 @@ import FtsButton from '../../components/FtsButton'
 import FtsTextBox from '../../components/FtsTextBox'
 import FtsHeaderBar from '../../components/FtsHeaderBar'
 
-export default function LoginScreen({ navigation }) {
+export default function CadastrarLocalScreen({ navigation }) {
     const [estado, setEstado] = useState([
         { id: 1, nome: 'Paraná', sigla: 'PR' },
         { id: 2, nome: 'Pernambuco', sigla: 'PE' },
@@ -30,10 +30,7 @@ export default function LoginScreen({ navigation }) {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.inputsContainer}>
                         <View style={styles.inputText}>
-
-                            
                             <FtsTextBox color="red" iconName="people" placeholder="Nome" />
-
                         </View>
                     </View>
                     <View style={styles.inputsContainer}>

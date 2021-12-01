@@ -5,7 +5,7 @@ import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsButton from '../../components/FtsButton'
 
-export default function Dados({ navigation }) {
+export default function DadosScreen({ navigation }) {
     const backAction = () => {
         // Alert.alert('Sair', 'Tem certeza que deseja sair?', [
         //     {

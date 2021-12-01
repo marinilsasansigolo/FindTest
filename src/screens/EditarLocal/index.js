@@ -9,7 +9,7 @@ import firebaseApp from '../../config/firebaseConfig'
 
 import styles from './style'
 
-export default function EditarLocal({ navigation }) {
+export default function EditarLocalScreen({ navigation }) {
     const database = getFirestore(firebaseApp)
     const [task, setTask] = useState([])
 
@@ -96,7 +96,7 @@ export default function EditarLocal({ navigation }) {
             <TouchableOpacity
                 style={styles.buttonNewTask}
                 onPress={() => {
-                    navigation.navigate('DadosEdicao')
+                    navigation.navigate('CadastrarLocal')
                 }}
             >
                 <Text style={styles.iconButton}>+</Text>

@@ -74,11 +74,6 @@ export default function App() {
                 />
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen
-                    name="PesquisarLocal"
-                    component={PrincipalScreen}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
                     name="Principal"
                     component={PrincipalScreen}
                     options={{ headerShown: false }}
@@ -105,17 +100,7 @@ export default function App() {
                 />
                 <Stack.Screen
                     name="Dados"
-                    component={Dados}
-                    options={{
-                        headerShown: true,
-                        headerTitle: '',
-                        headerTransparent: true,
-                        headerShadowVisible: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="EditarLocal"
-                    component={EditarLocal}
+                    component={DadosScreen}
                     options={{
                         headerShown: true,
                         headerTitle: '',
@@ -125,7 +110,17 @@ export default function App() {
                 />
                 <Stack.Screen
                     name="DadosEdicao"
-                    component={DadosEdicao}
+                    component={DadosEdicaoScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="EditarLocal"
+                    component={EditarLocalScreen}
                     options={{
                         headerShown: true,
                         headerTitle: '',

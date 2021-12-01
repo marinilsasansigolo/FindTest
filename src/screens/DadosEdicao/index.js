@@ -17,7 +17,7 @@ import FtsHeaderBar from '../../components/FtsHeaderBar'
 import { getFirestore, updateDoc, doc } from 'firebase/firestore'
 import firebaseApp from '../../config/firebaseConfig'
 
-export default function DadosEdicao({ navigation, route }) {
+export default function DadosEdicaoScreen({ navigation, route }) {
     //Banco de dados
     const database = getFirestore(firebaseApp)
 

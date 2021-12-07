@@ -5,24 +5,26 @@ export default function Company(props) {
     return (
         <View style={styles.companyCard}>
             <View style={styles.companyCardRow}>
-                <View>
-                    <Image
+                {/* <View>
+                     <Image
                         style={styles.companyImage}
                         source={require('../../../assets/company.png')}
-                    />
-                </View>
+                    /> 
+                </View> */}
                 <View>
                     <Text style={[styles.companyText, styles.companyTextTitle]}>
-                        {props.dados.nome}
+                        Nome: {props.dados.nome}
                     </Text>
-                    <Text style={styles.companyText}>{props.dados.atendimento}</Text>
-                    <Text style={styles.companyText}>{props.dados.telefone}</Text>
-                    <Text style={styles.companyText}>{props.dados.email}</Text>
+                    <Text style={styles.companyText}>
+                        Atendimento: {props.dados.horarioAtendimento}
+                    </Text>
+                    <Text style={styles.companyText}>Telefone: {props.dados.telefone}</Text>
+                    <Text style={styles.companyText}>E-mail: {props.dados.email}</Text>
                 </View>
             </View>
 
             <View style={styles.companyCardAddress}>
-                <Text style={styles.companyText}>{props.dados.endereco}</Text>
+                <Text style={styles.companyText}>Endereço: {props.dados.endereco}</Text>
                 <Text style={styles.companyText}>
                     {props.dados.cidade} - {props.dados.uf}
                 </Text>

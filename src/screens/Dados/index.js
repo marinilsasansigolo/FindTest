@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Alert, StyleSheet, View, BackHandler } from 'react-native'
+import { StyleSheet, View, BackHandler } from 'react-native'
 
 import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
@@ -45,7 +45,7 @@ export default function DadosScreen({ navigation }) {
                             <FtsButton
                                 text="Editar dados pessoais"
                                 onPress={() => {
-                                    // navigation.navigate('SignUp')
+                                    navigation.navigate('EditarUsuario')
                                 }}
                             />
                         </View>

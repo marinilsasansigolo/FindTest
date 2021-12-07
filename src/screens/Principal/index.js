@@ -67,17 +67,6 @@ export default function PrincipalScreen({ navigation }) {
                     <View>
                         <View style={styles.button}>
                             <FtsButton
-                                text="Editar Dados"
-                                onPress={() => {
-                                    navigation.navigate('Dados')
-                                }}
-                            />
-                        </View>
-                    </View>
-
-                    <View>
-                        <View style={styles.button}>
-                            <FtsButton
                                 text="Menu Principal"
                                 onPress={() => {
                                     navigation.navigate('Home')

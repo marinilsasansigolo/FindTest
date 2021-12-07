@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { MaterialIcons } from '@expo/vector-icons'
-
 import HomeScreen from './src/screens/Home'
 import LoginScreen from './src/screens/Login'
 import SignUpScreen from './src/screens/SignUp'
@@ -11,14 +9,10 @@ import SplashScreen from './src/screens/Splash'
 import PrincipalScreen from './src/screens/Principal'
 import SearchCompanyScreen from './src/screens/SearchCompany'
 import CadastrarLocalScreen from './src/screens/CadastrarLocal'
-import Dados from './src/screens/Dados'
-import EditarLocal from './src/screens/EditarLocal'
-import DadosEdicao from './src/screens/DadosEdicao'
-
-import HeaderBackButton from './src/components/FtsHeaderBackButton'
 import DadosScreen from './src/screens/Dados'
 import EditarLocalScreen from './src/screens/EditarLocal'
 import DadosEdicaoScreen from './src/screens/DadosEdicao'
+import EditarUsuarioScreen from './src/screens/EditarUsuario'
 
 const Stack = createNativeStackNavigator()
 
@@ -74,11 +68,6 @@ export default function App() {
                 />
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen
-                    name="Principal"
-                    component={PrincipalScreen}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
                     name="SearchCompany"
                     component={SearchCompanyScreen}
                     options={{
@@ -121,6 +110,16 @@ export default function App() {
                 <Stack.Screen
                     name="EditarLocal"
                     component={EditarLocalScreen}
+                    options={{
+                        headerShown: true,
+                        headerTitle: '',
+                        headerTransparent: true,
+                        headerShadowVisible: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="EditarUsuario"
+                    component={EditarUsuarioScreen}
                     options={{
                         headerShown: true,
                         headerTitle: '',

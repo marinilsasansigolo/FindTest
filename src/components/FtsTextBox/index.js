@@ -15,6 +15,7 @@ export default function FtsTextBox(props) {
                 placeholder={props.placeholder}
                 keyboardType={props.keyboardType}
                 secureTextEntry={props.isPassword}
+                value={props.value}
                 onChangeText={props.onChangeText}
             />
         </View>

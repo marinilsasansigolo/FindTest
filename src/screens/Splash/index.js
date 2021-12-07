@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+
+import { getAuth, signOut } from 'firebase/auth'
 
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsLogo from '../../components/FtsLogo'
 
 export default function SplashScreen({ navigation }) {
+    useEffect(() => {
+        const auth = getAuth()
+
+        // Desconecta o usuário logado:
+        // signOut(auth)
+        //     .then(() => {})
+        //     .catch((error) => {})
+    }, [])
+
     return (
         <FtsBackground>
             <View style={styles.container}>

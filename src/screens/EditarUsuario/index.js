@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, View, KeyboardAvoidingView } from 'react-native'
 
+import { getFirestore, updateDoc, doc, getDoc, query, collection, where } from 'firebase/firestore'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { getFirestore, setDoc, doc } from 'firebase/firestore'
 
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -13,42 +13,36 @@ import FtsButton from '../../components/FtsButton'
 import FtsTextBox from '../../components/FtsTextBox'
 import FtsHeaderBar from '../../components/FtsHeaderBar'
 
-export default function SignUpScreen({ navigation }) {
+export default function EditarUsuarioScreen({ navigation }) {
+    const database = getFirestore(firebaseApp)
+    const auth = getAuth()
+    const user = auth.currentUser
+
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [errorRegister, setErrorRegister] = useState(false)
 
-    const database = getFirestore(firebaseApp)
+    useEffect(() => {
+        localizarUsuario(user)
+    }, [])
 
-    // Função de registro:
-    function registerFirebase() {
-        const auth = getAuth()
+    // Recupera os dados do usuário logado:
+    async function localizarUsuario(user) {
+        const docRef = doc(database, 'usuario', user.uid)
+        const docSnap = await getDoc(docRef)
 
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                const user = userCredential.user
-                cadastrarUsuario(user)
-            })
-            .catch((error) => {
-                setErrorRegister('Não foi possível cadastrar este usuário')
-
-                if (error.code === 'auth/email-already-in-use') {
-                    setErrorRegister('Este usuário já existe')
-                }
-            })
+        setNome(docSnap.data().nome)
+        setEmail(docSnap.data().email)
     }
 
-    async function cadastrarUsuario(user) {
-        const usuario = {
+    // Função de registro:
+    async function salvarUsuario() {
+        const docRefLocal = doc(database, 'usuario', user.uid)
+
+        await updateDoc(docRefLocal, {
             nome,
             email,
-        }
-
-        // Cria um novo usuário (collection): usuario | id do usuario logado -> campos: nome e email:
-        await setDoc(doc(database, 'usuario', user.uid), {
-            nome: nome,
-            email: email,
         })
 
         navigation.navigate('MenuPrincipal')
@@ -68,6 +62,7 @@ export default function SignUpScreen({ navigation }) {
                         <FtsTextBox
                             iconName="person"
                             placeholder="Nome do usuário"
+                            value={nome}
                             onChangeText={(text) => {
                                 setNome(text)
                                 setErrorRegister(false)
@@ -78,13 +73,14 @@ export default function SignUpScreen({ navigation }) {
                         <FtsTextBox
                             iconName="mail"
                             placeholder="E-mail"
+                            value={email}
                             onChangeText={(text) => {
                                 setEmail(text)
                                 setErrorRegister(false)
                             }}
                         />
                     </View>
-                    <FtsTextBox
+                    {/* <FtsTextBox
                         iconName="vpn-key"
                         placeholder="Senha"
                         isPassword={true}
@@ -92,7 +88,7 @@ export default function SignUpScreen({ navigation }) {
                             setSenha(text)
                             setErrorRegister(false)
                         }}
-                    />
+                    /> */}
                     {errorRegister && (
                         <View style={styles.contentAlert}>
                             <MaterialCommunityIcons name="alert-circle" size={24} color="#bdbdbd" />
@@ -104,7 +100,7 @@ export default function SignUpScreen({ navigation }) {
             <View style={styles.bottomContent}>
                 <View>
                     <View style={styles.button}>
-                        <FtsButton text="Cadastrar" onPress={registerFirebase} />
+                        <FtsButton text="Salvar" onPress={salvarUsuario} />
                     </View>
                 </View>
                 <View></View>
@@ -116,7 +112,6 @@ export default function SignUpScreen({ navigation }) {
 const styles = StyleSheet.create({
     containerContent: {
         flex: 1,
-        // backgroundColor: 'green',
     },
     headerBar: {
         // backgroundColor: 'black',
@@ -124,7 +119,6 @@ const styles = StyleSheet.create({
     logoContainer: {
         flex: 1,
         alignItems: 'center',
-        // backgroundColor: 'yellow',
     },
     inputsContainer: {
         flex: 2,
@@ -138,7 +132,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         padding: 17,
-        // backgroundColor: 'purple',
     },
 
     button: {

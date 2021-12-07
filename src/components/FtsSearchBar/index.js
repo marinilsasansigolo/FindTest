@@ -3,11 +3,17 @@ import { StyleSheet, TextInput, View } from 'react-native'
 
 import { MaterialIcons } from '@expo/vector-icons'
 
-export default function FtsSearchBar() {
+export default function FtsSearchBar(props) {
     return (
         <View style={styles.searchContainer}>
             <MaterialIcons style={styles.searchIcon} name="search" />
-            <TextInput style={styles.searchText} placeholder="Pesquisar..." />
+            <TextInput
+                style={styles.searchText}
+                placeholder="Pesquisar..."
+                autoCapitalize="none"
+                value={props.value}
+                onChangeText={props.onChangeText}
+            />
         </View>
     )
 }

@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native'
+
+// Essa linha causa o erro: "Asyncstorage has been extracted from..."
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
@@ -8,13 +13,48 @@ import FtsTextBox from '../../components/FtsTextBox'
 import FtsHeaderBar from '../../components/FtsHeaderBar'
 
 export default function LoginScreen({ navigation }) {
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const [errorLogin, setErrorLogin] = useState(false)
+
+    useEffect(() => {
+        const auth = getAuth()
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigation.navigate('MenuPrincipal', { user })
+            }
+        })
+    }, [])
+
+    // Função de login:
+    const loginFirebase = () => {
+        const auth = getAuth()
+
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user
+
+                navigation.navigate('MenuPrincipal', { user })
+            })
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+
+                setErrorLogin(true)
+            })
+    }
+
     return (
         <FtsBackground>
             {/* <View style={styles.headerBar}>
                 <FtsHeaderBar navigation />
             </View> */}
 
-            <KeyboardAvoidingView behavior="padding" style={styles.containerContent}>
+            <KeyboardAvoidingView
+                style={styles.containerContent}
+                behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+            >
                 <View style={styles.logoContainer}>
                     <FtsLogo />
                 </View>
@@ -26,21 +66,35 @@ export default function LoginScreen({ navigation }) {
                             color="red"
                             iconName="mail"
                             placeholder="E-mail"
+                            onChangeText={(text) => {
+                                setEmail(text)
+                                setErrorLogin(false)
+                            }}
                         />
                     </View>
-                    <FtsTextBox iconName="vpn-key" placeholder="Senha" isPassword={true} />
+                    <FtsTextBox
+                        iconName="vpn-key"
+                        placeholder="Senha"
+                        isPassword={true}
+                        onChangeText={(text) => {
+                            setSenha(text)
+                            setErrorLogin(false)
+                        }}
+                    />
+                    {errorLogin && (
+                        <View style={styles.contentAlert}>
+                            <MaterialCommunityIcons name="alert-circle" size={24} color="#bdbdbd" />
+                            <Text style={styles.warningAlert}>E-mail ou senha inválido</Text>
+                        </View>
+                    )}
                 </View>
             </KeyboardAvoidingView>
 
             <View style={styles.bottomContent}>
                 <View>
                     <View style={styles.button}>
-                        <FtsButton
-                            text="Entrar"
-                            onPress={() => {
-                                navigation.navigate('MenuPrincipal')
-                            }}
-                        />
+                        <FtsButton text="Entrar" onPress={loginFirebase} />
+
                         <View style={styles.bottomTextContainer}>
                             <Text style={styles.bottomText}>Não é usuário?</Text>
                             <TouchableOpacity
@@ -109,5 +163,16 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical: 10,
+    },
+    contentAlert: {
+        marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    warningAlert: {
+        paddingLeft: 10,
+        color: '#bdbdbd',
+        fontSize: 15,
     },
 })

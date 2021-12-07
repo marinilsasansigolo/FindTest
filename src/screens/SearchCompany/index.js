@@ -60,7 +60,13 @@ export default function SearchCompanyScreen({ navigation }) {
     function search(dadoPesquisado) {
         // Faz uma cópia dos dados da lista para esta constante, se usar o filter diretamente no state ele perderá os dados:
         const tempData = JSON.parse(JSON.stringify(originalData))
-        setData(tempData.filter((d) => d.nome.toLowerCase().includes(dadoPesquisado.toLowerCase())))
+        setData(
+            tempData.filter(
+                (d) =>
+                    d.nome.toLowerCase().includes(dadoPesquisado.toLowerCase()) ||
+                    d.cidade.toLowerCase().includes(dadoPesquisado.toLowerCase())
+            )
+        )
     }
 
     return (

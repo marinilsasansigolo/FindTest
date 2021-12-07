@@ -9,7 +9,7 @@ export default function FtsSearchBar(props) {
             <MaterialIcons style={styles.searchIcon} name="search" />
             <TextInput
                 style={styles.searchText}
-                placeholder="Pesquisar..."
+                placeholder="Pesquisar (nome ou cidade)..."
                 autoCapitalize="none"
                 value={props.value}
                 onChangeText={props.onChangeText}

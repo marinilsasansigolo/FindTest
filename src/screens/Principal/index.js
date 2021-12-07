@@ -1,27 +1,44 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, View, BackHandler, Alert } from 'react-native'
 
+import { getAuth, signOut } from 'firebase/auth'
+
 import FtsLogo from '../../components/FtsLogo'
 import { FtsBackground } from '../../components/FtsBackground'
 import FtsButton from '../../components/FtsButton'
 
 export default function PrincipalScreen({ navigation }) {
+    useEffect(() => {
+        const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction)
+
+        return () => backHandler.remove()
+    }, [])
+
     const backAction = () => {
         Alert.alert('Sair', 'Tem certeza que deseja sair?', [
             {
                 text: 'Cancelar',
                 onPress: () => null,
             },
-            { text: 'Sim', onPress: () => BackHandler.exitApp() },
+            {
+                text: 'Sim',
+                onPress: () => {
+                    logoff()
+                    BackHandler.exitApp()
+                },
+            },
         ])
         return true
     }
 
-    useEffect(() => {
-        const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction)
+    function logoff() {
+        const auth = getAuth()
 
-        return () => backHandler.remove()
-    }, [])
+        // Desconecta o usuário logado:
+        signOut(auth)
+            .then(() => {})
+            .catch((error) => {})
+    }
 
     return (
         <FtsBackground>
